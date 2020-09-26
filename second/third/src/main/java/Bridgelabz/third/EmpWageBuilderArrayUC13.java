@@ -1,26 +1,32 @@
 package Bridgelabz.third;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Hello world!
  *
  */
-public class EmpWageBuilderArrayUC10 
+
+
+public class EmpWageBuilderArrayUC13 implements EmpWageBuilderInterface
 {
 	static final int IS_FULL_TIME = 1;
 	static final int IS_PART_TIME= 2;
 	private int noOfCompanies = 0;
-	public void incNoOfCompanies() {
-		this.noOfCompanies++;
-	}
-	EmpWageChars []empWageCharacters= new EmpWageChars[5];
+//	public void incNoOfCompanies() {
+//		this.noOfCompanies++;
+//	}
+	List<EmpWageChars> empWageCharacters= new ArrayList<EmpWageChars>();
 	
 	public void addEmpWageChars(EmpWageChars empWageChars) {
-		this.empWageCharacters[this.noOfCompanies++] = empWageChars;
+		this.empWageCharacters.add(empWageChars);
+		noOfCompanies++;
 	}
     
 	public static void main( String[] args )
     {
-    	EmpWageBuilderArrayUC10 compArray = new EmpWageBuilderArrayUC10();
+		EmpWageBuilderArrayUC13 compArray = new EmpWageBuilderArrayUC13();
     	EmpWageChars comp1 = new EmpWageChars("Dmart",200,17,100);
     	EmpWageChars comp2 = new EmpWageChars("Amazon",300,15,90);
     	compArray.addEmpWageChars(comp1);
@@ -30,7 +36,7 @@ public class EmpWageBuilderArrayUC10
     
 	public void calcEmpWage() {
     	for(int i=0;i<this.noOfCompanies;i++) {
-    		this.empWageCharacters[i].setTotalEmpWage(this.calcEmpWage(this.empWageCharacters[i]));
+    		this.empWageCharacters.get(i).setTotalEmpWage(this.calcEmpWage(this.empWageCharacters.get(i)));
     	}
     }
     
@@ -51,6 +57,7 @@ public class EmpWageBuilderArrayUC10
     		}
     		totalWorkingHrs += noOfHrs;
     		final int empWage= noOfHrs*empWageChar.getEmpRatePerHour();
+    		empWageChar.addDailyWage(empWage);
     		totalWage+=empWage;
     	}
     	if(totalWorkingHrs >= empWageChar.getMaxHoursPerMonth())

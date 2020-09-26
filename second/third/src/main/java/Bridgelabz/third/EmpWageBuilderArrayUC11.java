@@ -4,14 +4,16 @@ package Bridgelabz.third;
  * Hello world!
  *
  */
-public class EmpWageBuilderArrayUC10 
+
+
+public class EmpWageBuilderArrayUC11 implements EmpWageBuilderInterface
 {
 	static final int IS_FULL_TIME = 1;
 	static final int IS_PART_TIME= 2;
 	private int noOfCompanies = 0;
-	public void incNoOfCompanies() {
-		this.noOfCompanies++;
-	}
+//	public void incNoOfCompanies() {
+//		this.noOfCompanies++;
+//	}
 	EmpWageChars []empWageCharacters= new EmpWageChars[5];
 	
 	public void addEmpWageChars(EmpWageChars empWageChars) {
@@ -20,7 +22,7 @@ public class EmpWageBuilderArrayUC10
     
 	public static void main( String[] args )
     {
-    	EmpWageBuilderArrayUC10 compArray = new EmpWageBuilderArrayUC10();
+		EmpWageBuilderArrayUC11 compArray = new EmpWageBuilderArrayUC11();
     	EmpWageChars comp1 = new EmpWageChars("Dmart",200,17,100);
     	EmpWageChars comp2 = new EmpWageChars("Amazon",300,15,90);
     	compArray.addEmpWageChars(comp1);
