@@ -16,6 +16,18 @@ import java.util.Set;
  */
 public class AddressBookMainUC5
 {
+	/**
+	 * contactBook , the list of ContactDetails inside AddressBook
+	 */
+	/**
+	 * nameToContact, the map from name to ContactDetails of a person
+	 */
+	/**
+	 * name, the name of the AddressBook
+	 */
+	/**
+	 * nameToAddressBook, the dictionary for storing all the AddressBooks
+	 */
 	private String name;
 	private List<ContactDetails> contactBook = new ArrayList<ContactDetails>();
 	private Map<String,ContactDetails> nameToContact = new HashMap<String,ContactDetails>();
@@ -35,7 +47,9 @@ public class AddressBookMainUC5
 		this.name = name;
 	}
 
-
+	/**
+	 * @return ContactDetails, returns object of type ContactDetails after taking i/p from user
+	 */
 	private static ContactDetails getContactDetails() {
 		Scanner sc= new Scanner(System.in);
 		System.out.println("Enter the contact details");
@@ -61,14 +75,18 @@ public class AddressBookMainUC5
 		return cd1;
 	}
 	
-	
+	/**
+	 * addContactDetails(), adds a person's ContactDetails to the AddressBook 
+	 */
 	private void addContactDetails(ContactDetails contactDetails) {
 		contactBook.add(contactDetails);
 		String name= contactDetails.getFirstName() + " " + contactDetails.getLastName();
 		nameToContact.put(name, contactDetails);
 	}
 	
-	
+	/**
+	 * printAddressBook(), prints the ContactDetails present in the AddressBook
+	 */
 	private void printAddressBook() {
 		if(contactBook.size() == 0) {
 			System.out.println("No contacts present in the address book");
@@ -91,7 +109,9 @@ public class AddressBookMainUC5
 		}
 	}
 	
-	
+	/**
+	 * deleteThrName(), deleting a person's ContactDetails by specifying name
+	 */
 	private void deleteThrName() {
 		Scanner sc= new Scanner(System.in);
 		while (true) {
@@ -117,7 +137,10 @@ public class AddressBookMainUC5
 		}
 	}
 	
-	
+	/**
+	 * editContactDetails(), Provides an option for editing a person's details 
+	 * by specifying the name
+	 */
 	private void editContactDetails() {
 		Scanner sc= new Scanner(System.in);
 //		char c='N';
@@ -127,10 +150,16 @@ public class AddressBookMainUC5
 					+ "\n2. N/n for no"
 					+ "\n");
 			String input= sc.next();
+			/**
+			 * @param edit, checks whether user wants to edit details or not
+			 */
 			char edit = input.charAt(0);
 			if(Character.toUpperCase(edit)=='Y') {
 				System.out.println("Enter the name of the person whose details you want to edit");
 				sc.nextLine();			//catches the new line character
+				/**
+				 * @param name, checks whose details the user wants to change
+				 */
 				String name= sc.nextLine();
 				if(nameToContact.containsKey(name)){
 					ContactDetails cdTemp= nameToContact.get(name);
@@ -143,6 +172,9 @@ public class AddressBookMainUC5
 							+ "\n6. Zip code"
 							+ "\n7. Phone Number"
 							+ "\n8. Email");
+					/**
+					 * @param arg, determines what the user wants to change
+					 */
 					int arg= sc.nextInt();
 					sc.nextLine(); //catches the new line character
 					switch(arg) {
@@ -193,6 +225,9 @@ public class AddressBookMainUC5
 	}
 	
 	
+	/**
+	 * @return AddressBookMainUC5, returns an Addressbook with only a name
+	 */
 	private static AddressBookMainUC5 getAddressBook() {
 		AddressBookMainUC5 addressBookA = new AddressBookMainUC5();
 		Scanner sc= new Scanner(System.in);
@@ -204,7 +239,12 @@ public class AddressBookMainUC5
 //        addressBookA.addContactDetails(getContactDetails());
 	}
 	
-	
+	/**
+     * @param addressBookB, an AddressBook for storing ContactDetails
+     */
+	/**
+     * @param addressBookA, an AddressBook for storing ContactDetails
+     */
     public static void main( String[] args )
     {
         System.out.println( "Welcome to Address Book Program" );

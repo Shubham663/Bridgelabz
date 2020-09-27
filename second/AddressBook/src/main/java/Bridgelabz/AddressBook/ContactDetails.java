@@ -1,4 +1,4 @@
-package Bridgelabz.fourth;
+package Bridgelabz.AddressBook;
 
 /**
  * @author Shubham, class ContactDetails for storing info of person

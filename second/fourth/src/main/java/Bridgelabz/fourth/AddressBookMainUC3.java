@@ -12,9 +12,20 @@ import java.util.Scanner;
  */
 public class AddressBookMainUC3
 {
+	/**
+	 * contactBook , the list of ContactDetails inside AddressBook
+	 */
+	/**
+	 * nameToContact, the map from name to ContactDetails of a person
+	 */
 	private List<ContactDetails> contactBook = new ArrayList<ContactDetails>();
+	
 	private Map<String,ContactDetails> nameToContact = new HashMap<String,ContactDetails>();
 	
+	
+	/**
+	 * @return ContactDetails, returns object of type ContactDetails after taking i/p from user
+	 */
 	private static ContactDetails getContactDetails() {
 		Scanner sc= new Scanner(System.in);
 		System.out.println("Enter the contact details");
@@ -41,13 +52,18 @@ public class AddressBookMainUC3
 	}
 	
 	
+	/**
+	 * addContactDetails(), adds a person's ContactDetails to the AddressBook 
+	 */
 	private void addContactDetails(ContactDetails contactDetails) {
 		contactBook.add(contactDetails);
 		String name= contactDetails.getFirstName() + " " + contactDetails.getLastName();
 		nameToContact.put(name, contactDetails);
 	}
 	
-	
+	/**
+	 * printAddressBook(), prints the ContactDetails present in the AddressBook
+	 */
 	private void printAddressBook() {
 		System.out.println("The contact details are as follows:");
 		for(int i=0;i <contactBook.size();i++) {
@@ -56,6 +72,11 @@ public class AddressBookMainUC3
 		}
 	}
 	
+	
+	/**
+	 * editContactDetails(), Provides an option for editing a person's details 
+	 * by specifying the name
+	 */
 	
 	private void editContactDetails() {
 		Scanner sc= new Scanner(System.in);
@@ -66,10 +87,16 @@ public class AddressBookMainUC3
 					+ "\n2. N/n for no"
 					+ "\n");
 			String input= sc.next();
+			/**
+			 * @param edit, checks whether user wants to edit details or not
+			 */
 			char edit = input.charAt(0);
 			if(Character.toUpperCase(edit)=='Y') {
 				System.out.println("Enter the name of the person whose details you want to edit");
-				sc.nextLine();
+				sc.nextLine();       //catches the next line character
+				/**
+				 * @param name, checks whose details the user wants to change
+				 */
 				String name= sc.nextLine();
 				if(nameToContact.containsKey(name)){
 					ContactDetails cdTemp= nameToContact.get(name);
@@ -82,6 +109,9 @@ public class AddressBookMainUC3
 							+ "\n6. Zip code"
 							+ "\n7. Phone Number"
 							+ "\n8. Email");
+					/**
+					 * @param arg, determines what the user wants to change
+					 */
 					int arg= sc.nextInt();
 					sc.nextLine(); //catches the new line character
 					switch(arg) {
@@ -131,7 +161,9 @@ public class AddressBookMainUC3
 		
 	}
 	
-	
+	 /**
+     * @param addressBook, an AddressBook for storing ContactDetails
+     */
     public static void main( String[] args )
     {
         System.out.println( "Welcome to Address Book Program" );
