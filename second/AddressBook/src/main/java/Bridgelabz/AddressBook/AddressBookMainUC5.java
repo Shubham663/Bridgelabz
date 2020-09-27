@@ -1,16 +1,20 @@
 package Bridgelabz.AddressBook;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  * Hello world!
  *
  */
-public class AddressBookMainUC4
+public class AddressBookMainUC5
 {
 	/**
 	 * contactBook , the list of ContactDetails inside AddressBook
@@ -18,9 +22,31 @@ public class AddressBookMainUC4
 	/**
 	 * nameToContact, the map from name to ContactDetails of a person
 	 */
+	/**
+	 * name, the name of the AddressBook
+	 */
+	/**
+	 * nameToAddressBook, the dictionary for storing all the AddressBooks
+	 */
+	private String name;
 	private List<ContactDetails> contactBook = new ArrayList<ContactDetails>();
 	private Map<String,ContactDetails> nameToContact = new HashMap<String,ContactDetails>();
-	
+	private static Dictionary<String, AddressBookMainUC5> nameToAddressBook = new Hashtable<String, AddressBookMainUC5>(); 
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	/**
 	 * @return ContactDetails, returns object of type ContactDetails after taking i/p from user
 	 */
@@ -66,13 +92,22 @@ public class AddressBookMainUC4
 			System.out.println("No contacts present in the address book");
 			return;
 		}
-		System.out.println("The contact details are as follows:");
+		System.out.println("The contact details for addressbook "+this.getName()+" are as follows:");
 		for(int i=0;i <contactBook.size();i++) {
-			System.out.println("\n"+"Contact No:"+ (i+1));
+//			System.out.println("Name of Address book: " + this.name);
+			System.out.println("\nContact No:"+ (i+1));
 			System.out.println(contactBook.get(i));
 		}
 	}
 	
+	
+	private void printAllAddressBooks() {
+		Enumeration<String> keys = nameToAddressBook.keys();
+		while(keys.hasMoreElements()) {
+			String key = keys.nextElement();
+			nameToAddressBook.get(key).printAddressBook();
+		}
+	}
 	
 	/**
 	 * deleteThrName(), deleting a person's ContactDetails by specifying name
@@ -106,7 +141,6 @@ public class AddressBookMainUC4
 	 * editContactDetails(), Provides an option for editing a person's details 
 	 * by specifying the name
 	 */
-	
 	private void editContactDetails() {
 		Scanner sc= new Scanner(System.in);
 //		char c='N';
@@ -190,17 +224,38 @@ public class AddressBookMainUC4
 		
 	}
 	
+	
 	/**
-     * @param addressBook, an AddressBook for storing ContactDetails
+	 * @return AddressBookMainUC5, returns an Addressbook with only a name
+	 */
+	private static AddressBookMainUC5 getAddressBook() {
+		AddressBookMainUC5 addressBookA = new AddressBookMainUC5();
+		Scanner sc= new Scanner(System.in);
+		System.out.println("Enter the name for the addressbook");
+		String name = sc.nextLine();
+		addressBookA.setName(name);
+		nameToAddressBook.put(name, addressBookA);
+		return addressBookA;
+//        addressBookA.addContactDetails(getContactDetails());
+	}
+	
+	/**
+     * @param addressBookB, an AddressBook for storing ContactDetails
+     */
+	/**
+     * @param addressBookA, an AddressBook for storing ContactDetails
      */
     public static void main( String[] args )
     {
         System.out.println( "Welcome to Address Book Program" );
-        AddressBookMainUC4 addressBook = new AddressBookMainUC4();
-        addressBook.addContactDetails(getContactDetails());
-        addressBook.addContactDetails(getContactDetails());
-        addressBook.editContactDetails();
-        addressBook.deleteThrName();
-        addressBook.printAddressBook();   
+        AddressBookMainUC5 addressBookB = getAddressBook();
+        AddressBookMainUC5 addressBookA = getAddressBook();
+        addressBookA.addContactDetails(getContactDetails());
+        addressBookB.addContactDetails(getContactDetails());
+//        addressBook.editContactDetails();
+//        addressBook.deleteThrName();
+//        addressBookA.printAddressBook();
+//        addressBookB.printAddressBook();
+        addressBookA.printAllAddressBooks();
     }
 }
