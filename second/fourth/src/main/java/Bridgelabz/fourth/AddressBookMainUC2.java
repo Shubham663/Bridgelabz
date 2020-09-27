@@ -8,11 +8,21 @@ import java.util.Scanner;
  * Hello world!
  *
  */
+/**
+ * @author Shubham, class AddressBookMainUC2 for keeping addressbooks.
+ *
+ */
 public class AddressBookMainUC2
 {
+	/**
+	 * contactBook , the list of ContactDetails inside AddressBook
+	 */
 	List<ContactDetails> contactBook = new ArrayList<ContactDetails>();
 	
 	
+	/**
+	 * @return ContactDetails, returns object of type ContactDetails after taking i/p from user
+	 */
 	private static ContactDetails getContactDetails() {
 		Scanner sc= new Scanner(System.in);
 		System.out.println("Enter the contact details");
@@ -39,6 +49,9 @@ public class AddressBookMainUC2
 	}
 	
 	
+	/**
+	 * printAddressBook(), prints the ContactDetails present in the AddressBook
+	 */
 	private void printAddressBook() {
 		System.out.println("The contact details are as follows:");
 		for(int i=0;i <contactBook.size();i++) {
@@ -48,6 +61,9 @@ public class AddressBookMainUC2
 	}
 	
 	
+    /**
+     * @param addressBook, an AddressBook for storing ContactDetails
+     */
     public static void main( String[] args )
     {
         System.out.println( "Welcome to Address Book Program" );
