@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
  * @author Shubham , class UserRegistrationUC2 for verifying username
  *
  */
-public class UserRegistrationUC5{
+public class UserRegistrationUC6{
 	/**
 	 * @param password, the password provided by the user
 	 */
@@ -22,7 +22,7 @@ public class UserRegistrationUC5{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the password");
 		String password = sc.nextLine();
-		final String mpass = "[a-zA-Z0-9]{8,}";
+		final String mpass = "^(?=.*[A-Z])[a-zA-Z0-9]{8,}";
 		Pattern pattern1 = Pattern.compile(mpass);
 		Matcher matcher1 = pattern1.matcher(password);
 		System.out.println("The password matches the pattern :- " + matcher1.matches());
