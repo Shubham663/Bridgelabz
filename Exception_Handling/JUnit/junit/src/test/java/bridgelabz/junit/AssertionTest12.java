@@ -68,7 +68,7 @@ public class AssertionTest12{
 	
 	
 	@Test
-	public void lastNameTest() {
+	public void lastNameTest_True() {
 		try {
 		if(!user.validateLastName(lastName))
 			throw new UserValidationException("The last name is not valid");
