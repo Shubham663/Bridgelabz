@@ -105,7 +105,7 @@ public class AssertionTest11{
 	
 	@Test
 	public void passwordTest_True() {
-		final String type1 = "^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}";;
+		final String type1 = "^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}";
 //		password = "Shubham205";
 		assertTrue("the password does not match the required format",password.matches(type1));
 	}
