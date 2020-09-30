@@ -1,5 +1,6 @@
 package bridgelabz.Mood_Analyzer;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -14,14 +15,20 @@ public class MoodAnalyzerTest
 	
 	@Before
 	public void init() {
-		moodAnalyzer = new MoodAnalyzer();
+		moodAnalyzer = new MoodAnalyzer("NULL");
 	}
     /**
      * Rigorous Test :-)
      */
     @Test
-    public void shouldAnswerWithTrue()
+    public void checkMoodNull()
     {
-        assertTrue( true );
+        assertEquals("Happy", moodAnalyzer.analyseMood() );
     }
+    
+    @Test
+    public void checkMoodEmpty(){
+    	assertEquals("Happy",moodAnalyzer.analyseMood());
+    }
+    
 }
