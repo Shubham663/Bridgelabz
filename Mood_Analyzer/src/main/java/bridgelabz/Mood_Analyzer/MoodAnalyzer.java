@@ -23,18 +23,11 @@ public class MoodAnalyzer {
 	public String analyseMood() {
 		if(message == null)
 			message = "I am in Sad mood";
-		if(message.contains("NULL") || message.length()==0)
+		if(message.contains("NULL"))
 		{
-			if(message.contains("NULL"))
-				moodErrors = MoodErrors.NULL;
-			else
-				moodErrors = MoodErrors.EmptyMood;
 			try
 			{
-				if(moodErrors == MoodErrors.NULL)
-					throw new NullMoodException(" the mood message provided by user is NULL");
-				else
-					throw new NullMoodException(" the mood message provided by user is Empty");
+				throw new NullMoodException(" the mood message provided by user is NULL");
 			}catch(NullMoodException e) {
 				System.err.println("Execution ended because" + e.getMessage());
 			}

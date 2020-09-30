@@ -15,13 +15,13 @@ public class MoodAnalyzerTest
 	
 	@Before
 	public void init() {
-		moodAnalyzer = new MoodAnalyzer("");
+		moodAnalyzer = new MoodAnalyzer("NULL");
 	}
     /**
      * Rigorous Test :-)
      */
     @Test
-    public void checkMoodNull_Or_Empty()
+    public void checkMoodNull()
     {
         assertEquals("Happy", moodAnalyzer.analyseMood() );
     }
