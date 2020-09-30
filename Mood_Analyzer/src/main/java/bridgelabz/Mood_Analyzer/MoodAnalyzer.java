@@ -18,7 +18,7 @@ public class MoodAnalyzer {
 	public String analyseMood() {
 		if(message.length()==0)
 			message = "I am in Sad mood";
-		if(message.contains("Sad"))
+		if(message.contains("Happy"))
 			mood = "SAD";
 		else
 			mood = "HAPPY";
